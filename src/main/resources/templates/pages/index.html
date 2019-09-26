@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout/default}">
+<head>
+    <title>映画管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div layout:fragment="mainContent">
+<!--    <h2>映画管理</h2>-->
+<!--    <div class="contents">-->
+
+<!--        <form th:action="@{/movies}" th:method="get">-->
+<!--            <a href="/movies/new" class="btn-gradient-blue newBtn" style="margin-bottom: 10px;">新規登録</a>-->
+<!--            <div class="tableHeadDiv">-->
+<!--                <input class="searchTextBox" name="search" type="text" th:value="${search}" placeholder="映画検索">-->
+<!--                <input class="releaseYearBox" name="year" type="text" th:value="${year}" placeholder="リリース年">-->
+<!--                <button class="btn-gradient-blue searchBtn" type="submit">検索</button>-->
+
+<!--                <input type="hidden" id="isWatchedInput" name="isWatched">-->
+<!--                <a type="button" th:href="@{/movies?search={search}&year={year}(search=${search}, year=${year})}" class="pushed" id="watchedBtn-null" style="margin-left: 30px" onclick="watchedBtnClicked('')" value="なし" th:text="なし"></a>-->
+<!--                <a type="button" th:href="@{/movies?search={search}&isWatched=true&year={year}(search=${search}, year=${year})}" class="noPushed" id="watchedBtn-already" onclick="watchedBtnClicked('true')" value="閲覧済" th:text="閲覧済"></a>-->
+<!--                <a type="button" th:href="@{/movies?search={search}&isWatched=false&year={year}(search=${search}, year=${year})}" class="noPushed" id="watchedBtn-still" onclick="watchedBtnClicked('false')" value="閲覧未済" th:text="閲覧未済"></a>-->
+<!--                <a class="btn-gradient-blue clearBtn" type="button" href="/movies">クリア</a>-->
+<!--            </div>-->
+<!--        </form>-->
+
+<!--        <div th:if="${deleteOk}==1" th:text="${deleteMovieId} + '番を削除しました' " style="color: red"></div>-->
+
+<!--        <table class="table table-striped">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th style="width: 70px;">#</th>-->
+<!--                <th>タイトル</th>-->
+<!--                <th>リリース年</th>-->
+<!--                <th>閲覧状況</th>-->
+<!--                <th>詳細</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody th:remove="all-but-first" th:each="movie: ${movieList}" th:object="${movie}">-->
+<!--            <tr>-->
+<!--                <td th:text="'#' + ${movie['id']}" style="width: 70px;"></td>-->
+<!--                <td th:text="${movie['title']}"></td>-->
+<!--                <td th:text="${movie['releaseYear']} + '年'"></td>-->
+<!--                <td th:classappend="${movie['watchedFlg']==true}? 'activeText' : 'inactiveText'"-->
+<!--                    th:text="${movie['watchedFlg']==true}? '閲覧済' : '閲覧未済'"></td>-->
+<!--                <td>-->
+<!--                    <a type="button" th:text="詳細を表示" th:href="@{/movies/{id}(id=${movie['id']})}" class="btn-gradient-gray" style="width: 85%;"></a>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--        <div style="text-align: center; margin-top: 10px;">-->
+<!--            <a th:href="@{/movies?search={search}&isWatched={isWatched}&year={year}(search=${search}, isWatched=${isWatched}, year=${year})}" class="paging"><<  </a>-->
+<!--            <a th:if="${previousPage}" th:href="@{/movies?search={search}&page={page}&isWatched={isWatched}&year={year}(page=${previousPage}, search=${search}, isWatched=${isWatched}, year=${year})}" class="paging">＜</a>-->
+<!--            <a th:if="${previousPage}" th:href="@{/movies?search={search}&page={page}&isWatched={isWatched}&year={year}(page=${previousPage}, search=${search}, isWatched=${isWatched}, year=${year})}" class="paging">-->
+<!--                <label th:text="${previousPage}"></label>-->
+<!--            </a>-->
+<!--                <label th:text="'['+${currentPage}+']'" class="paging"></label>-->
+<!--            <a th:if="${nextPage}" th:href="@{/movies?search={search}&page={page}&isWatched={isWatched}&year={year}(page=${nextPage}, search=${search}, isWatched=${isWatched}, year=${year})}" class="paging">-->
+<!--                <label th:text="${nextPage}"></label>-->
+<!--            </a>-->
+<!--            <a th:if="${nextPage}" th:href="@{/movies?search={search}&page={page}&isWatched={isWatched}&year={year}(page=${nextPage}, search=${search}, isWatched=${isWatched}, year=${year})}" class="paging">＞</a>-->
+<!--            <a th:if="${maxPage}" th:href="@{/movies?search={search}&page={page}&isWatched={isWatched}&year={year}(page=${maxPage}, search=${search}, isWatched=${isWatched}, year=${year})}" class="paging">  >></a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="underBtn">-->
+<!--        <a class="homeLink" href="/">ホーム</a>-->
+<!--    </div>-->
+<!--    <script th:inline="javascript">-->
+<!--        submitEl = document.getElementById('isWatchedInput');-->
+<!--        nullEl = document.getElementById('watchedBtn-null');-->
+<!--        alreadyEl = document.getElementById('watchedBtn-already');-->
+<!--        stillEl = document.getElementById('watchedBtn-still');-->
+<!--        watchedBtnClicked("[[${isWatched}]]");-->
+<!--        function watchedBtnClicked(condition) {-->
+<!--            submitEl.value = condition;-->
+<!--            if(condition==="true") {-->
+<!--                alreadyEl.className = "pushed";-->
+<!--                nullEl.className = "noPushed";-->
+<!--                stillEl.className = "noPushed";-->
+<!--            } else if(condition==="false") {-->
+<!--                stillEl.className = "pushed";-->
+<!--                nullEl.className = "noPushed";-->
+<!--                alreadyEl.className = "noPushed";-->
+<!--            } else {-->
+<!--                nullEl.className = "pushed";-->
+<!--                alreadyEl.className = "noPushed";-->
+<!--                stillEl.className = "noPushed";-->
+<!--                submitEl.value = "";-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
+</div>
+</body>
+</html>
