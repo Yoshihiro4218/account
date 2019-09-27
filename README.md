@@ -1,4 +1,4 @@
-TODO: updated_at created_atのnotnullとdefault
+TODO: updated_at created_atのnotnullとdefaultの設定
 ```sql
 create table accounts (
       id integer primary key auto_increment,
@@ -8,6 +8,8 @@ create table accounts (
       updated_at timestamp
 );
 ```
+
+
 
 Optional雛形
 ```
