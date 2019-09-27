@@ -8,3 +8,22 @@ create table accounts (
       updated_at timestamp
 );
 ```
+
+Optional雛形
+```
+public String method() {
+        if(bindingResult.hasErrors()) {
+            return "";
+        }
+
+        Optional<UserRepresentation> maybeUser = userService.findLockedUserByUsername(username);
+        return maybeUser.map(user -> {
+            if() {
+                return "";
+            }
+            return "";
+        }).orElseGet(() -> {
+            return "";
+        });
+    }
+```
