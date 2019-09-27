@@ -3,11 +3,9 @@ package account.account.app.controller;
 import account.account.domain.entity.*;
 import lombok.extern.slf4j.*;
 import org.springframework.security.core.*;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.*;
 import org.springframework.ui.*;
-import org.springframework.web.bind.annotation.GetMapping;
-
-import javax.servlet.http.*;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @Slf4j
