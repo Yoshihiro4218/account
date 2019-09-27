@@ -1,5 +1,6 @@
 package account.account.app.controller;
 
+import account.account.domain.entity.*;
 import lombok.extern.slf4j.*;
 import org.springframework.security.core.*;
 import org.springframework.stereotype.Controller;
@@ -13,14 +14,11 @@ import javax.servlet.http.*;
 public class TestController {
 
     @GetMapping("/test")
-    public String test(Model model, HttpServletRequest httpServletRequest, Authentication authentication) {
-        log.info("user={}", httpServletRequest.getRemoteUser());
-
-        log.info("auth={}", authentication.getName());
-
-        log.info("authPrincipal={}", authentication.getPrincipal());
-
-        model.addAttribute("user", httpServletRequest.getRemoteUser());
+    public String test(Model model, Authentication authentication) {
+        Account account = (Account)authentication.getPrincipal();
+        String userEmail = account.getEmail();
+        log.info("authPrincipal={}", userEmail);
+        model.addAttribute("user", userEmail);
         return "pages/index";
     }
 }
