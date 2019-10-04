@@ -14,6 +14,10 @@
 //
 //        // 認証するときの処理を。
 //
+//        List<GrantedAuthority> grantList = new ArrayList<>();
+//        GrantedAuthority authority = new SimpleGrantedAuthority("USER");
+//        grantList.add(authority);
+//
 //        return new UsernamePasswordAuthenticationToken(userName, hashedPassword, grantList);
 //    }
 //
