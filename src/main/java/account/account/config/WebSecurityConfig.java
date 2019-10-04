@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.*;
 import org.springframework.security.web.util.matcher.*;
 
 @Configuration
@@ -35,7 +36,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .loginProcessingUrl("/login") // ログイン処理をするURL
             .loginPage("/login") // ログインページのURL
             .failureUrl("/login/?error") // ログイン処理失敗時の遷移先
-            .defaultSuccessUrl("/test") // 認証成功時の遷移先
+            .successHandler(new SavedRequestAwareAuthenticationSuccessHandler())
+//            .defaultSuccessUrl("/test") // 認証成功時の遷移先
             .usernameParameter("email").passwordParameter("password"); // ユーザ名(今回はメールアドレスだけど)とパラメータ
 
 //        http.formLogin()
