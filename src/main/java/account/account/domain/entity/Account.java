@@ -5,7 +5,6 @@ import org.springframework.security.core.*;
 import org.springframework.security.core.userdetails.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.*;
 
 @Entity

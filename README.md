@@ -29,3 +29,38 @@ public String method() {
         });
     }
 ```
+
+各UT
+
+- spring のコンテキストでtest
+```
+@RunWith(SpringRunner.class)
+@SpringBootTest
+.
+.
+@Autowired
+Xxxxxx target;
+```
+
+- Mock
+```
+@RunWith(MockitoJunitRunner.class)
+.
+.
+@InjectMocks
+Xxxxx target;
+@Mock
+Yyyyy yyyy;
+```
+
+- Controller
+```
+@RunWith(SpringRunner.class)
+@WebMvcTest(XxxxxController.class)
+.
+.
+@Autowired
+MockMvc mockMvc;
+@MockBean
+Xxxxx xxxxx;
+```
