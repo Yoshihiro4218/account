@@ -1,4 +1,4 @@
-//package account.account.config;
+//package account.account.account.account.config;
 //
 //import lombok.*;
 //import org.springframework.security.authentication.*;
