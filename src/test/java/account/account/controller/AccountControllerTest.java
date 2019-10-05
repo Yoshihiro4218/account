@@ -70,4 +70,11 @@ public class AccountControllerTest {
                .andExpect(model().hasErrors())
                .andExpect(view().name("pages/accountForm"));
     }
+
+//    private static void accountFormBuilder() {
+//        AccountForm accountForm = AccountForm.builder()
+//                                             .email("test@test.com")
+//                                             .password("testPassword")
+//                                             .build();
+//    }
 }
