@@ -3,6 +3,7 @@ package account.account.app.controller;
 import account.account.domain.entity.*;
 import account.account.domain.service.*;
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.*;
 import org.springframework.validation.*;
 import org.springframework.validation.annotation.*;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/account")
 @AllArgsConstructor
+@Slf4j
 public class AccountController {
 
     private final AccountService accountService;
@@ -26,7 +28,7 @@ public class AccountController {
     }
 
     @PostMapping("")
-    String create(@Validated AccountForm form, BindingResult bindingResult) {
+    public String create(@Validated AccountForm form, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "pages/accountForm";
         }
@@ -37,7 +39,7 @@ public class AccountController {
     }
 
     @GetMapping("/complete")
-    String createFinish() {
+    public String createFinish() {
         return "pages/accountComplete";
     }
 }
