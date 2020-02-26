@@ -59,8 +59,31 @@ Yyyyy yyyy;
 @WebMvcTest(XxxxxController.class)
 .
 .
+.
+private MockMvc mockMvc;
 @Autowired
-MockMvc mockMvc;
+WebApplicationContext webApplicationContext;
 @MockBean
 Xxxxx xxxxx;
+.
+.
+@Before
+public void setUp() {
+    mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
+                             .apply(springSecurity())
+                             .build();
+}
+.
+.
+mockMvc.perform(get("/....")
+                .with(AuthenticationPostRequestProcessor
+                          .user(8354L, "id", "name")))
+----------------
+
+public static RequestPostProcessor user(long userId, String ffgId, String userName) {
+    GrantedAuthority authority = new SimpleGrantedAuthority(UserRole.ROLE_USER.getRoleName());
+    return userBuild(authority, userId, ffgId, userName);
+}
 ```
+
+
