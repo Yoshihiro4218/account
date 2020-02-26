@@ -80,9 +80,9 @@ mockMvc.perform(get("/....")
                           .user(8354L, "id", "name")))
 ----------------
 
-public static RequestPostProcessor user(long userId, String ffgId, String userName) {
+public static RequestPostProcessor user(long userId, String id, String userName) {
     GrantedAuthority authority = new SimpleGrantedAuthority(UserRole.ROLE_USER.getRoleName());
-    return userBuild(authority, userId, ffgId, userName);
+    return userBuild(authority, userId, id, userName);
 }
 ```
 
